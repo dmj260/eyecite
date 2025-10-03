@@ -942,6 +942,14 @@ class Document:
                     "Not clear which to apply `clean_steps` to"
                 )
 
+            # I done hacked it bro
+            self.plain_to_markup = SpanUpdater(
+                self.markup_text, self.plain_text
+            )
+            self.markup_to_plain = SpanUpdater(
+                self.plain_text, self.markup_text
+            )
+
             self.source_text = self.markup_text
 
     def identify_emphasis_tags(self):
