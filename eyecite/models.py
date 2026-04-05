@@ -75,6 +75,8 @@ class CitationBase:
     groups: dict = field(default_factory=dict)
     metadata: Any = None
     document: Optional["Document"] = None
+    group: Any = None
+    paragraph: Any = None
 
     def __post_init__(self):
         """Set up groups and metadata."""

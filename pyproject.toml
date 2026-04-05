@@ -35,12 +35,15 @@ urls.Repository = "https://github.com/freelawproject/eyecite"
 urls."Organisation Homepage" = "https://free.law/"
 
 dependencies = [
-  "courts-db>=0.10.9",
-  "fast-diff-match-patch>=2.0.0",
-  "lxml>=4.6.3",
-  "pyahocorasick>=1.2",
-  "regex>=2020.1.8",
-  "reporters-db>=3.2.53",
+  "courts-db==0.10.27",
+  "cython==3.2.4",
+  "fast-diff-match-patch==2.1.0",
+  "hyperscan==0.8.2",
+  "lxml==6.0.2",
+  "pyahocorasick==2.3.0",
+  "regex==2026.3.32",
+  "reporters-db==3.2.64",
+  "six==1.17.0",
 ]
 
 [dependency-groups]
