@@ -254,7 +254,7 @@ def is_valid_name(name: str) -> bool:
 
 
 def maybe_balance_style_tags(
-    start: int, end: int, plain_text: str, tolerance: int = 30
+    start: int, end: int, plain_text: str, tolerance: int = 45
 ) -> tuple[int, int, str]:
     """Try to include missing style tags in the proximity of the found span
 
@@ -275,7 +275,7 @@ def maybe_balance_style_tags(
     :return: a tuple (new start, new end, new span text)
     """
     span_text = plain_text[start:end]
-    style_tags = ["i", "em", "b", "u"]
+    style_tags = ["i", "em", "b", "u", "s", "span", "mark"]
 
     for tag in style_tags:
         opening_tag = f"<{tag}>"

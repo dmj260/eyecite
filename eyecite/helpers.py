@@ -43,7 +43,7 @@ BACKWARD_SEEK = 28  # Median case name length in the CL db is 28 (2016-02-26)
 # Maximum characters to scan using match_on_tokens.
 # If this is higher we have to do a little more work for each match_on_tokens
 # call to prepare the text to be matched.
-MAX_MATCH_CHARS = 300
+MAX_MATCH_CHARS = 400
 
 
 def get_court_by_paren(paren_string: str) -> str | None:
@@ -282,6 +282,13 @@ def _scan_for_case_boundaries(
             break
 
         # Break on lowercase word w/o "v" token - start with capitalized words
+        #Todo this code is breaking case names with defendant names that include
+        #lowercase letters. I think Jones v. Mutual of Omaha will break, with
+        #case name as 'Omaha'. The best workaround for us is to us HTML hints.
+        #I think we can cull html hints an stick them in a document obj (which is
+        #passed to this help function.) Then when we get to this point, we
+        # test if the string-so-far including this token is NOT a substring
+        # of a hint. If so, then break it. If not, keep going to the v token.
         if _is_lowercase_without_v_token(word_str, state["v_token"]):
             if word_str in ["ex", "rel."]:
                 # ignore common lower cased
